@@ -1,0 +1,13 @@
+version: '3'
+services:
+  web:
+    # コンテナを起動する際のベースとなるDockerイメージを指定する
+    image: nginx:1.13.5-alpine
+    # 公開するポート番号の指定。ホスト側：コンテナ側という形式で指定することで、ホストマシン側のポートとコンテナ側のポートをマッピング。
+    ports:
+      - "80:80"
+    # ホスト側：コンテナ側の形式で指定することで、ホスト側の任意のディレクト or ファイルにコンテナにマウントします。
+    # ホスト側を省略するとData volumeという領域がDockerシステムディレクトリ以下に自動生成されて、コンテナ内にマウントされる。
+    volumes:
+      - ./web/nginx.default.conf:/etc/nginx/conf.d/default.conf
+      - ./data/html:/var/www/html
