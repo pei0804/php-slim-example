@@ -6,8 +6,15 @@ services:
     # 公開するポート番号の指定。ホスト側：コンテナ側という形式で指定することで、ホストマシン側のポートとコンテナ側のポートをマッピング。
     ports:
       - "80:80"
+    # サービス間の依存関係を指定。依存関係のある順序に従ってサービスを起動するようにする。
+    depends_on:
+      - app
     # ホスト側：コンテナ側の形式で指定することで、ホスト側の任意のディレクト or ファイルにコンテナにマウントします。
     # ホスト側を省略するとData volumeという領域がDockerシステムディレクトリ以下に自動生成されて、コンテナ内にマウントされる。
     volumes:
       - ./web/nginx.default.conf:/etc/nginx/conf.d/default.conf
+      - ./data/html:/var/www/html
+  app:
+    image: php:7.1.9-fpm-alpine
+    volumes:
       - ./data/html:/var/www/html
