@@ -1,0 +1,23 @@
+{
+    "name": "jumpei/php-slim-example",
+    "type": "project",
+    "require": {
+        "slim/slim": "3",
+        "slim/php-view": "2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "pei0804",
+            "email": "peeeei0804@gmail.com"
+        }
+    ]
+}

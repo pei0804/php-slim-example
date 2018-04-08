@@ -6,3 +6,5 @@
 .terraform/
 
 .DS_Store
+
+vendor/
